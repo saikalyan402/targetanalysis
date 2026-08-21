@@ -27,7 +27,6 @@ GOLD2 = "#BFA24A"
 TEXT = "#F3F0E7"
 MUTED = "#9F9B90"
 CARD = "#111111"
-
 GRID = "rgba(212,175,55,.12)"
 BORDER = "rgba(212,175,55,.24)"
 
@@ -41,251 +40,131 @@ st.markdown(
     color:#F3F0E7;
 }
 
-
 [data-testid="stSidebar"] {
     background:#0B0B0B;
     border-right:1px solid rgba(212,175,55,.24);
 }
 
-
 [data-testid="stSidebar"] * {
     color:#F3F0E7;
 }
 
-
 .hero {
-
-    border:
-        1px solid
-        rgba(212,175,55,.24);
-
+    border:1px solid rgba(212,175,55,.24);
     border-radius:22px;
-
-    padding:
-        24px
-        26px;
-
+    padding:24px 26px;
     margin-bottom:18px;
-
-    background:
-        linear-gradient(
-            110deg,
-            rgba(212,175,55,.10),
-            rgba(255,255,255,.015)
-        );
-
+    background:linear-gradient(
+        110deg,
+        rgba(212,175,55,.10),
+        rgba(255,255,255,.015)
+    );
 }
-
 
 .eyebrow {
-
     color:#D4AF37;
-
     font-size:.76rem;
-
     letter-spacing:.17em;
-
     font-weight:750;
-
     text-transform:uppercase;
-
     margin-bottom:8px;
-
 }
-
 
 .hero-title {
-
-    font-size:
-        clamp(
-            1.9rem,
-            3vw,
-            3.05rem
-        );
-
+    font-size:clamp(1.9rem, 3vw, 3.05rem);
     line-height:1.04;
-
     font-weight:760;
-
 }
-
 
 .hero-sub {
-
     color:#9F9B90;
-
     margin-top:10px;
-
     font-size:.96rem;
-
     line-height:1.6;
-
     max-width:1100px;
-
 }
-
 
 .section-title {
-
     font-size:1.22rem;
-
     font-weight:730;
-
     margin-top:12px;
-
 }
-
 
 .section-note {
-
     color:#9F9B90;
-
     font-size:.87rem;
-
     margin-bottom:13px;
-
     line-height:1.55;
-
 }
-
 
 .kpi {
-
-    border:
-        1px solid
-        rgba(212,175,55,.24);
-
+    border:1px solid rgba(212,175,55,.24);
     border-radius:17px;
-
-    padding:
-        15px
-        16px;
-
+    padding:15px 16px;
     min-height:112px;
-
-    background:
-        linear-gradient(
-            145deg,
-            #121212,
-            #0D0D0D
-        );
-
+    background:linear-gradient(
+        145deg,
+        #121212,
+        #0D0D0D
+    );
 }
-
 
 .kpi-label {
-
     color:#9F9B90;
-
     font-size:.72rem;
-
     letter-spacing:.04em;
-
     text-transform:uppercase;
-
     font-weight:650;
-
 }
-
 
 .kpi-value {
-
     font-size:1.55rem;
-
     font-weight:760;
-
     margin-top:7px;
-
 }
-
 
 .gold {
-
     color:#D4AF37;
-
 }
-
 
 .kpi-foot {
-
     color:#9F9B90;
-
     font-size:.71rem;
-
     margin-top:7px;
-
     line-height:1.35;
-
 }
-
 
 .info,
 .callout {
-
     background:#0D0D0D;
-
-    border:
-        1px solid
-        rgba(212,175,55,.24);
-
-    border-left:
-        3px solid #D4AF37;
-
+    border:1px solid rgba(212,175,55,.24);
+    border-left:3px solid #D4AF37;
     border-radius:12px;
-
-    padding:
-        13px
-        15px;
-
+    padding:13px 15px;
     color:#B9B5A9;
-
     font-size:.87rem;
-
-    margin:
-        8px
-        0
-        16px;
-
+    margin:8px 0 16px;
     line-height:1.65;
-
 }
-
 
 .callout {
-
-    background:
-        linear-gradient(
-            145deg,
-            rgba(212,175,55,.08),
-            rgba(255,255,255,.01)
-        );
-
-    border-left:
-        1px solid
-        rgba(212,175,55,.24);
-
+    background:linear-gradient(
+        145deg,
+        rgba(212,175,55,.08),
+        rgba(255,255,255,.01)
+    );
+    border-left:1px solid rgba(212,175,55,.24);
 }
-
 
 .small-gold {
-
     color:#D4AF37;
-
     font-weight:700;
-
 }
 
-
 [data-testid="stDataFrame"] {
-
-    border:
-        1px solid
-        rgba(212,175,55,.20);
-
+    border:1px solid rgba(212,175,55,.20);
     border-radius:14px;
-
     overflow:hidden;
-
 }
 
 </style>
@@ -299,89 +178,60 @@ st.markdown(
 # ============================================================
 
 REQUIRED = {
-
     "Emp Code",
-
     "Employee Name",
-
     "FY 26 TGT EQ NS",
-
     "Equity NS Ach YTD June",
-
 }
 
 
 FILTER_COLS = [
-
     "Status",
-
     "Type",
-
     "ZONE",
-
     "REGION",
-
 ]
 
 
 MONTHS = {
-
     1: "July",
-
     2: "August",
-
     3: "September",
-
     4: "October",
-
     5: "November",
-
     6: "December",
-
     7: "January",
-
     8: "February",
-
     9: "March",
-
 }
 
 
 # ============================================================
-# HELPERS
+# GENERAL HELPERS
 # ============================================================
 
 def norm(value):
 
     if value is None:
-
         return ""
-
 
     if (
         isinstance(value, float)
-        and
-        np.isnan(value)
+        and np.isnan(value)
     ):
-
         return ""
 
-
     return " ".join(
-
         str(value)
         .strip()
         .split()
-
     )
 
 
 def unique_headers(values):
 
     seen = {}
-
     output = []
-
 
     for index, value in enumerate(values):
 
@@ -391,26 +241,18 @@ def unique_headers(values):
             f"Unnamed_{index}"
         )
 
-
         if base not in seen:
 
             seen[base] = 0
-
-            output.append(
-                base
-            )
-
+            output.append(base)
 
         else:
 
             seen[base] += 1
 
             output.append(
-
                 f"{base}.{seen[base]}"
-
             )
-
 
     return output
 
@@ -423,82 +265,52 @@ def unique_headers(values):
 def load_uploaded(file_bytes):
 
     raw = pd.read_excel(
-
-        BytesIO(
-            file_bytes
-        ),
-
+        BytesIO(file_bytes),
         header=None,
-
         engine="openpyxl",
-
     )
-
 
     header = None
 
-
     for index in range(
-
         min(
             25,
             len(raw)
         )
-
     ):
 
         values = {
-
             norm(value)
-
-            for value in
-
-            raw.iloc[
-                index
-            ].tolist()
-
+            for value
+            in raw.iloc[index].tolist()
         }
 
-
         if (
-
-            "FY 26 TGT EQ NS"
-            in values
-
+            "FY 26 TGT EQ NS" in values
             and
-
-            "Equity NS Ach YTD June"
-            in values
-
+            "Equity NS Ach YTD June" in values
         ):
 
             header = index
-
             break
 
 
     if header is None:
 
         raise ValueError(
-
             "Could not locate the RM header row."
-
         )
 
 
     df = raw.iloc[
-
         header + 1:
-
     ].copy()
 
 
     df.columns = unique_headers(
-
         raw.iloc[
             header
         ].tolist()
-
     )
 
 
@@ -508,91 +320,51 @@ def load_uploaded(file_bytes):
 
 
     missing = [
-
         column
-
         for column
         in REQUIRED
-
-        if column
-        not in df.columns
-
+        if column not in df.columns
     ]
 
 
     if missing:
 
         raise ValueError(
-
             "Missing columns: "
-
             +
-
-            ", ".join(
-                missing
-            )
-
+            ", ".join(missing)
         )
 
 
     for column in [
-
         "FY 26 TGT EQ NS",
-
         "Equity NS Ach YTD June",
-
     ]:
 
         df[column] = pd.to_numeric(
-
             df[column],
-
             errors="coerce",
-
         )
 
 
-    df[
-        "Employee Name"
-    ] = (
-
-        df[
-            "Employee Name"
-        ]
-
+    df["Employee Name"] = (
+        df["Employee Name"]
         .fillna("")
-
         .astype(str)
-
         .str.strip()
-
     )
 
 
-    df[
-        "Emp Code"
-    ] = (
-
-        df[
-            "Emp Code"
-        ]
-
+    df["Emp Code"] = (
+        df["Emp Code"]
         .fillna("")
-
         .astype(str)
-
         .str.strip()
-
         .str.replace(
-
             r"\.0$",
-
             "",
-
             regex=True,
-
         )
-
     )
 
 
@@ -601,46 +373,29 @@ def load_uploaded(file_bytes):
         if column in df.columns:
 
             df[column] = (
-
                 df[column]
-
-                .fillna(
-                    "Unknown"
-                )
-
+                .fillna("Unknown")
                 .astype(str)
-
                 .str.strip()
-
             )
 
-
             df.loc[
-
                 df[column].eq(""),
-
                 column
-
             ] = "Unknown"
 
 
     # ========================================================
-    # USE SECOND MKT TYPE COLUMN
+    # SECOND MKT TYPE COLUMN
     # ========================================================
 
     if "MKT TYPE.1" in df.columns:
 
-        market_type_source = (
-            "MKT TYPE.1"
-        )
-
+        market_type_source = "MKT TYPE.1"
 
     elif "MKT TYPE" in df.columns:
 
-        market_type_source = (
-            "MKT TYPE"
-        )
-
+        market_type_source = "MKT TYPE"
 
     else:
 
@@ -649,41 +404,23 @@ def load_uploaded(file_bytes):
 
     if market_type_source:
 
-        df[
-            "Market Type"
-        ] = (
-
+        df["Market Type"] = (
             df[
                 market_type_source
             ]
-
-            .fillna(
-                "Unknown"
-            )
-
+            .fillna("Unknown")
             .astype(str)
-
             .str.strip()
-
         )
 
-
         df.loc[
-
-            df[
-                "Market Type"
-            ].eq(""),
-
+            df["Market Type"].eq(""),
             "Market Type"
-
         ] = "Unknown"
-
 
     else:
 
-        df[
-            "Market Type"
-        ] = "Unknown"
+        df["Market Type"] = "Unknown"
 
 
     return (
@@ -694,7 +431,7 @@ def load_uploaded(file_bytes):
 
 
 # ============================================================
-# FORMATTING
+# NUMBER FORMATTING
 # ============================================================
 
 def fmt(value):
@@ -704,12 +441,9 @@ def fmt(value):
         or
         pd.isna(value)
     ):
-
         return "—"
 
-
     value = float(value)
-
 
     if abs(value) >= 1_000_000:
 
@@ -717,13 +451,11 @@ def fmt(value):
             f"{value / 1_000_000:,.2f}M"
         )
 
-
     if abs(value) >= 1_000:
 
         return (
             f"{value / 1_000:,.2f}K"
         )
-
 
     return f"{value:,.2f}"
 
@@ -735,9 +467,7 @@ def pct(value):
         or
         pd.isna(value)
     ):
-
         return "—"
-
 
     return (
         f"{float(value):,.1f}%"
@@ -756,20 +486,13 @@ def kpi(
 ):
 
     css_class = (
-
         "kpi-value gold"
-
         if accent
-
         else
-
         "kpi-value"
-
     )
 
-
     st.html(
-
         f"""
 <div class="kpi">
 
@@ -787,7 +510,6 @@ def kpi(
 
 </div>
 """
-
     )
 
 
@@ -797,7 +519,6 @@ def section(
 ):
 
     st.html(
-
         f"""
 <div class="section-title">
     {title}
@@ -807,15 +528,11 @@ def section(
     {note}
 </div>
 """
-
     )
 
 
 # ============================================================
-# SAFE DATAFRAME FUNCTION
-#
-# IMPORTANT:
-# NO height=None IS SENT TO STREAMLIT
+# SAFE DATAFRAME
 # ============================================================
 
 def showdf(
@@ -825,63 +542,44 @@ def showdf(
 
     display = dataframe.copy()
 
-
     numeric_columns = (
-
         display
-
         .select_dtypes(
             include=[
                 np.number
             ]
         )
-
         .columns
-
     )
-
 
     display[
         numeric_columns
     ] = (
-
         display[
             numeric_columns
         ]
-
         .round(2)
-
     )
 
-
-    dataframe_kwargs = {
-
-        "data":
-            display,
-
-        "width":
-            "stretch",
-
-        "hide_index":
-            True,
-
+    kwargs = {
+        "data": display,
+        "width": "stretch",
+        "hide_index": True,
     }
-
 
     if height is not None:
 
-        dataframe_kwargs[
+        kwargs[
             "height"
         ] = height
 
-
     st.dataframe(
-        **dataframe_kwargs
+        **kwargs
     )
 
 
 # ============================================================
-# CHART STYLE
+# PLOTLY STYLE
 # ============================================================
 
 def style(
@@ -906,68 +604,51 @@ def style(
         ),
 
         margin=dict(
-
             l=28,
-
             r=24,
-
             t=58,
-
             b=48,
-
         ),
 
         hoverlabel=dict(
-
             bgcolor="#171717",
-
             font_color=TEXT,
-
             bordercolor=GOLD2,
-
         ),
 
         legend=dict(
-
             bgcolor=
                 "rgba(0,0,0,0)"
-
         ),
 
     )
 
 
     fig.update_xaxes(
-
         showgrid=True,
-
         gridcolor=GRID,
-
         zeroline=False,
-
         linecolor=BORDER,
-
         tickfont=dict(
             color=MUTED
         ),
-
+        title_font=dict(
+            color=MUTED
+        ),
     )
 
 
     fig.update_yaxes(
-
         showgrid=True,
-
         gridcolor=GRID,
-
         zeroline=False,
-
         linecolor=BORDER,
-
         tickfont=dict(
             color=MUTED
         ),
-
+        title_font=dict(
+            color=MUTED
+        ),
     )
 
 
@@ -988,7 +669,10 @@ def scenario(
     df = dataframe.copy()
 
 
-    # Apr + May + Jun = 3 months
+    # ========================================================
+    # CURRENT MONTHLY RUN RATE
+    # APR + MAY + JUN = 3 MONTHS
+    # ========================================================
 
     df[
         "Current Monthly RR"
@@ -1005,6 +689,10 @@ def scenario(
     )
 
 
+    # ========================================================
+    # SCENARIO MONTHLY RUN RATE
+    # ========================================================
+
     df[
         "Scenario Monthly RR"
     ] = (
@@ -1017,9 +705,7 @@ def scenario(
 
         (
             1
-
             +
-
             uplift
             /
             100.0
@@ -1027,6 +713,10 @@ def scenario(
 
     )
 
+
+    # ========================================================
+    # PROJECTED FUTURE NS
+    # ========================================================
 
     df[
         "Projected Future NS"
@@ -1042,6 +732,10 @@ def scenario(
 
     )
 
+
+    # ========================================================
+    # FINAL PROJECTED NS
+    # ========================================================
 
     df[
         "Projected Final NS"
@@ -1059,6 +753,10 @@ def scenario(
 
     )
 
+
+    # ========================================================
+    # PROJECTED ACHIEVEMENT
+    # ========================================================
 
     df[
         "Projected Achievement %"
@@ -1092,6 +790,10 @@ def scenario(
     )
 
 
+    # ========================================================
+    # QUALIFICATION CHECK
+    # ========================================================
+
     df[
         "Crosses Threshold"
     ] = (
@@ -1124,6 +826,10 @@ def scenario(
     )
 
 
+    # ========================================================
+    # RM CONTRIBUTION
+    # ========================================================
+
     df[
         "Contribution %"
     ] = 0.0
@@ -1132,28 +838,19 @@ def scenario(
     if qualifying_total != 0:
 
         mask = (
-
             df[
                 "Crosses Threshold"
             ]
-
         )
 
-
         df.loc[
-
             mask,
-
             "Contribution %",
-
         ] = (
 
             df.loc[
-
                 mask,
-
                 "Projected Final NS",
-
             ]
 
             /
@@ -1171,104 +868,692 @@ def scenario(
 
 
 # ============================================================
-# PAGE 1 CHARTS
+# BELL CURVE TABLE
 # ============================================================
 
-def top_contributors(
-    dataframe
+def bell_curve_analysis(
+    scenario_df
 ):
 
-    qualifying = (
+    df = scenario_df.copy()
 
-        dataframe[
+    values = (
+        df[
+            "Projected Achievement %"
+        ]
+        .replace(
+            [
+                np.inf,
+                -np.inf
+            ],
+            np.nan
+        )
+        .dropna()
+    )
 
-            dataframe[
-                "Crosses Threshold"
+
+    if values.empty:
+
+        return (
+            pd.DataFrame(),
+            np.nan,
+            np.nan,
+            np.nan,
+        )
+
+
+    mean_value = (
+        values.mean()
+    )
+
+    median_value = (
+        values.median()
+    )
+
+    std_value = (
+        values.std()
+    )
+
+
+    if (
+        pd.isna(
+            std_value
+        )
+        or
+        std_value == 0
+    ):
+
+        std_value = (
+            0.000001
+        )
+
+
+    lower_2 = (
+        mean_value
+        -
+        2
+        *
+        std_value
+    )
+
+
+    lower_1 = (
+        mean_value
+        -
+        std_value
+    )
+
+
+    upper_1 = (
+        mean_value
+        +
+        std_value
+    )
+
+
+    upper_2 = (
+        mean_value
+        +
+        2
+        *
+        std_value
+    )
+
+
+    bins = [
+        -np.inf,
+        lower_2,
+        lower_1,
+        mean_value,
+        upper_1,
+        upper_2,
+        np.inf,
+    ]
+
+
+    labels = [
+        "Below μ - 2σ",
+        "μ - 2σ to μ - 1σ",
+        "μ - 1σ to Mean",
+        "Mean to μ + 1σ",
+        "μ + 1σ to μ + 2σ",
+        "Above μ + 2σ",
+    ]
+
+
+    df[
+        "Bell Curve Band"
+    ] = pd.cut(
+        df[
+            "Projected Achievement %"
+        ],
+        bins=bins,
+        labels=labels,
+        include_lowest=True,
+    )
+
+
+    total_rms = (
+        len(df)
+    )
+
+
+    total_projected_ns = (
+        df[
+            "Projected Final NS"
+        ]
+        .sum()
+    )
+
+
+    normal_reference = {
+
+        "Below μ - 2σ":
+            2.3,
+
+        "μ - 2σ to μ - 1σ":
+            13.6,
+
+        "μ - 1σ to Mean":
+            34.1,
+
+        "Mean to μ + 1σ":
+            34.1,
+
+        "μ + 1σ to μ + 2σ":
+            13.6,
+
+        "Above μ + 2σ":
+            2.3,
+
+    }
+
+
+    result = (
+
+        df
+
+        .groupby(
+            "Bell Curve Band",
+            observed=False,
+        )
+
+        .agg(
+            **{
+
+                "No. of RMs":
+                    (
+                        "Employee Name",
+                        "size"
+                    ),
+
+                "Eq Target":
+                    (
+                        "FY 26 TGT EQ NS",
+                        "sum"
+                    ),
+
+                "Projected NS":
+                    (
+                        "Projected Final NS",
+                        "sum"
+                    ),
+
+                "Avg Achievement %":
+                    (
+                        "Projected Achievement %",
+                        "mean"
+                    ),
+
+                "Median Achievement %":
+                    (
+                        "Projected Achievement %",
+                        "median"
+                    ),
+
+                "Currently Qualifying":
+                    (
+                        "Crosses Threshold",
+                        "sum"
+                    ),
+
+            }
+        )
+
+        .reset_index()
+
+    )
+
+
+    result[
+        "Bell Curve Band"
+    ] = (
+        result[
+            "Bell Curve Band"
+        ]
+        .astype(str)
+    )
+
+
+    if total_rms > 0:
+
+        result[
+            "Actual RM Distribution %"
+        ] = (
+
+            result[
+                "No. of RMs"
             ]
 
-        ]
+            /
 
-        .nlargest(
+            total_rms
 
-            15,
+            *
 
-            "Contribution %",
+            100
 
         )
 
-        .sort_values(
+    else:
 
-            "Contribution %"
+        result[
+            "Actual RM Distribution %"
+        ] = 0
+
+
+    result[
+        "Normal Curve Reference %"
+    ] = (
+
+        result[
+            "Bell Curve Band"
+        ]
+
+        .map(
+            normal_reference
+        )
+
+        .fillna(0)
+
+    )
+
+
+    if total_projected_ns != 0:
+
+        result[
+            "Projected NS Contribution %"
+        ] = (
+
+            result[
+                "Projected NS"
+            ]
+
+            /
+
+            total_projected_ns
+
+            *
+
+            100
+
+        )
+
+    else:
+
+        result[
+            "Projected NS Contribution %"
+        ] = 0
+
+
+    total_row = pd.DataFrame(
+        [
+            {
+
+                "Bell Curve Band":
+                    "Total",
+
+                "No. of RMs":
+                    result[
+                        "No. of RMs"
+                    ].sum(),
+
+                "Eq Target":
+                    result[
+                        "Eq Target"
+                    ].sum(),
+
+                "Projected NS":
+                    result[
+                        "Projected NS"
+                    ].sum(),
+
+                "Avg Achievement %":
+                    df[
+                        "Projected Achievement %"
+                    ].mean(),
+
+                "Median Achievement %":
+                    df[
+                        "Projected Achievement %"
+                    ].median(),
+
+                "Currently Qualifying":
+                    int(
+                        df[
+                            "Crosses Threshold"
+                        ].sum()
+                    ),
+
+                "Actual RM Distribution %":
+                    100.0,
+
+                "Normal Curve Reference %":
+                    100.0,
+
+                "Projected NS Contribution %":
+                    100.0,
+
+            }
+        ]
+    )
+
+
+    result = pd.concat(
+        [
+            result,
+            total_row,
+        ],
+        ignore_index=True,
+    )
+
+
+    return (
+        result,
+        mean_value,
+        median_value,
+        std_value,
+    )
+
+
+# ============================================================
+# BEFORE VS NOW BELL CURVE GRAPH
+# ============================================================
+
+def before_after_bell_curve(
+    before_df,
+    after_df,
+):
+
+    before_values = (
+
+        before_df[
+            "Projected Achievement %"
+        ]
+
+        .replace(
+            [
+                np.inf,
+                -np.inf
+            ],
+            np.nan
+        )
+
+        .dropna()
+
+        .astype(float)
+
+    )
+
+
+    after_values = (
+
+        after_df[
+            "Projected Achievement %"
+        ]
+
+        .replace(
+            [
+                np.inf,
+                -np.inf
+            ],
+            np.nan
+        )
+
+        .dropna()
+
+        .astype(float)
+
+    )
+
+
+    fig = go.Figure()
+
+
+    if (
+        before_values.empty
+        or
+        after_values.empty
+    ):
+
+        fig.update_layout(
+            title=
+                "Bell Curve Shift · Before vs Now"
+        )
+
+        return style(
+            fig,
+            470
+        )
+
+
+    # ========================================================
+    # STATISTICS
+    # ========================================================
+
+    before_mean = (
+        before_values.mean()
+    )
+
+
+    before_std = (
+        before_values.std()
+    )
+
+
+    after_mean = (
+        after_values.mean()
+    )
+
+
+    after_std = (
+        after_values.std()
+    )
+
+
+    if (
+        pd.isna(
+            before_std
+        )
+        or
+        before_std == 0
+    ):
+
+        before_std = (
+            0.000001
+        )
+
+
+    if (
+        pd.isna(
+            after_std
+        )
+        or
+        after_std == 0
+    ):
+
+        after_std = (
+            0.000001
+        )
+
+
+    before_std = float(
+        before_std
+    )
+
+
+    after_std = float(
+        after_std
+    )
+
+
+    # ========================================================
+    # COMMON X RANGE
+    # ========================================================
+
+    minimum_x = min(
+
+        before_values.min(),
+
+        after_values.min(),
+
+        before_mean
+        -
+        3
+        *
+        before_std,
+
+        after_mean
+        -
+        3
+        *
+        after_std,
+
+    )
+
+
+    maximum_x = max(
+
+        before_values.max(),
+
+        after_values.max(),
+
+        before_mean
+        +
+        3
+        *
+        before_std,
+
+        after_mean
+        +
+        3
+        *
+        after_std,
+
+    )
+
+
+    x = np.linspace(
+        minimum_x,
+        maximum_x,
+        500,
+    )
+
+
+    # ========================================================
+    # FITTED NORMAL CURVE - BEFORE
+    # ========================================================
+
+    before_y = (
+
+        1
+
+        /
+
+        (
+            before_std
+            *
+            np.sqrt(
+                2
+                *
+                np.pi
+            )
+        )
+
+        *
+
+        np.exp(
+
+            -0.5
+
+            *
+
+            (
+
+                (
+                    x
+                    -
+                    before_mean
+                )
+
+                /
+
+                before_std
+
+            )
+
+            ** 2
 
         )
 
     )
 
 
-    if len(
-        qualifying
-    ):
+    # ========================================================
+    # FITTED NORMAL CURVE - AFTER
+    # ========================================================
 
-        custom_data = (
+    after_y = (
 
-            np.column_stack(
+        1
 
-                [
+        /
 
-                    qualifying[
-                        "Projected Final NS"
-                    ],
+        (
+            after_std
+            *
+            np.sqrt(
+                2
+                *
+                np.pi
+            )
+        )
 
-                    qualifying[
-                        "Projected Achievement %"
-                    ],
+        *
 
-                ]
+        np.exp(
+
+            -0.5
+
+            *
+
+            (
+
+                (
+                    x
+                    -
+                    after_mean
+                )
+
+                /
+
+                after_std
 
             )
 
+            ** 2
+
         )
 
-
-    else:
-
-        custom_data = None
+    )
 
 
-    fig = go.Figure(
+    # ========================================================
+    # BEFORE CURVE
+    # ========================================================
 
-        go.Bar(
+    fig.add_trace(
 
-            x=
-                qualifying[
-                    "Contribution %"
-                ],
+        go.Scatter(
 
-            y=
-                qualifying[
-                    "Employee Name"
-                ],
+            x=x,
 
-            orientation=
-                "h",
+            y=before_y,
 
-            marker_color=
-                GOLD,
+            mode=
+                "lines",
 
-            customdata=
-                custom_data,
+            name=
+                "Before · Current Run Rate",
+
+            line=dict(
+                color="#7D7D7D",
+                width=3,
+            ),
+
+            fill=
+                "tozeroy",
+
+            fillcolor=
+                "rgba(125,125,125,0.10)",
 
             hovertemplate=(
 
-                "<b>%{y}</b>"
+                "Projected Achievement: %{x:.1f}%"
 
-                "<br>Contribution %{x:.2f}%"
+                "<br>Density: %{y:.4f}"
 
-                "<br>Projected NS %{customdata[0]:,.2f}"
-
-                "<br>Achievement %{customdata[1]:.1f}%"
-
-                "<extra></extra>"
+                "<extra>Before</extra>"
 
             ),
 
@@ -1277,64 +1562,77 @@ def top_contributors(
     )
 
 
-    fig.update_layout(
+    # ========================================================
+    # AFTER CURVE
+    # ========================================================
 
-        title=
-            "Top Contributors Among Threshold Achievers",
+    fig.add_trace(
 
-        xaxis_title=
-            "Contribution to qualifying NS (%)",
+        go.Scatter(
 
-    )
+            x=x,
 
+            y=after_y,
 
-    return style(
-        fig,
-        430
-    )
+            mode=
+                "lines",
 
+            name=
+                "Now · Increased Run Rate",
 
-def achievement_hist(
-    dataframe,
-    threshold,
-):
+            line=dict(
+                color=GOLD,
+                width=3,
+            ),
 
-    values = (
+            fill=
+                "tozeroy",
 
-        dataframe[
-            "Projected Achievement %"
-        ]
+            fillcolor=
+                "rgba(212,175,55,0.12)",
 
-        .replace(
+            hovertemplate=(
 
-            [
-                np.inf,
-                -np.inf
-            ],
+                "Projected Achievement: %{x:.1f}%"
 
-            np.nan,
+                "<br>Density: %{y:.4f}"
 
-        )
+                "<extra>Now</extra>"
 
-        .dropna()
-
-    )
-
-
-    fig = go.Figure(
-
-        go.Histogram(
-
-            x=
-                values,
-
-            nbinsx=
-                30,
-
-            marker_color=
-                GOLD,
+            ),
 
         )
+
+    )
+
+
+    # ========================================================
+    # MEAN LINES
+    # ========================================================
+
+    fig.add_vline(
+
+        x=
+            before_mean,
+
+        line_width=2,
+
+        line_dash=
+            "dash",
+
+        line_color=
+            "#999999",
+
+        annotation_text=(
+
+            "Before Mean "
+
+            f"{before_mean:.1f}%"
+
+        ),
+
+        annotation_position=
+            "top left",
 
     )
 
@@ -1342,16 +1640,51 @@ def achievement_hist(
     fig.add_vline(
 
         x=
-            threshold,
+            after_mean,
+
+        line_width=2,
 
         line_dash=
             "dash",
 
         line_color=
+            GOLD,
+
+        annotation_text=(
+
+            "Now Mean "
+
+            f"{after_mean:.1f}%"
+
+        ),
+
+        annotation_position=
+            "top right",
+
+    )
+
+
+    # ========================================================
+    # TARGET LINE
+    # ========================================================
+
+    fig.add_vline(
+
+        x=100,
+
+        line_width=1.5,
+
+        line_dash=
+            "dot",
+
+        line_color=
             TEXT,
 
         annotation_text=
-            "Threshold",
+            "100% Target",
+
+        annotation_position=
+            "bottom right",
 
     )
 
@@ -1359,24 +1692,615 @@ def achievement_hist(
     fig.update_layout(
 
         title=
-            "Projected Achievement Distribution",
+            "Bell Curve Shift · Before vs Now",
 
         xaxis_title=
             "Projected Achievement (%)",
 
         yaxis_title=
-            "RMs",
+            "Distribution Density",
+
+        hovermode=
+            "x unified",
+
+        legend=dict(
+
+            orientation=
+                "h",
+
+            yanchor=
+                "bottom",
+
+            y=
+                1.02,
+
+            xanchor=
+                "left",
+
+            x=
+                0,
+
+        ),
 
     )
 
 
     return style(
-        fig
+        fig,
+        470
     )
 
 
 # ============================================================
-# CONTRIBUTION BIN TABLE
+# BEFORE VS NOW SUMMARY
+# ============================================================
+
+def before_after_distribution_summary(
+    before_df,
+    after_df,
+):
+
+    before = (
+
+        before_df[
+            "Projected Achievement %"
+        ]
+
+        .replace(
+            [
+                np.inf,
+                -np.inf
+            ],
+            np.nan
+        )
+
+        .dropna()
+
+    )
+
+
+    after = (
+
+        after_df[
+            "Projected Achievement %"
+        ]
+
+        .replace(
+            [
+                np.inf,
+                -np.inf
+            ],
+            np.nan
+        )
+
+        .dropna()
+
+    )
+
+
+    before_mean = (
+        before.mean()
+    )
+
+
+    after_mean = (
+        after.mean()
+    )
+
+
+    before_median = (
+        before.median()
+    )
+
+
+    after_median = (
+        after.median()
+    )
+
+
+    before_std = (
+        before.std()
+    )
+
+
+    after_std = (
+        after.std()
+    )
+
+
+    before_100 = int(
+        (
+            before
+            >=
+            100
+        )
+        .sum()
+    )
+
+
+    after_100 = int(
+        (
+            after
+            >=
+            100
+        )
+        .sum()
+    )
+
+
+    before_120 = int(
+        (
+            before
+            >=
+            120
+        )
+        .sum()
+    )
+
+
+    after_120 = int(
+        (
+            after
+            >=
+            120
+        )
+        .sum()
+    )
+
+
+    return pd.DataFrame(
+        {
+
+            "Metric": [
+
+                "Mean Achievement %",
+
+                "Median Achievement %",
+
+                "Standard Deviation",
+
+                "RMs ≥ 100%",
+
+                "RMs ≥ 120%",
+
+            ],
+
+            "Before": [
+
+                before_mean,
+
+                before_median,
+
+                before_std,
+
+                before_100,
+
+                before_120,
+
+            ],
+
+            "Now": [
+
+                after_mean,
+
+                after_median,
+
+                after_std,
+
+                after_100,
+
+                after_120,
+
+            ],
+
+            "Change": [
+
+                after_mean
+                -
+                before_mean,
+
+                after_median
+                -
+                before_median,
+
+                after_std
+                -
+                before_std,
+
+                after_100
+                -
+                before_100,
+
+                after_120
+                -
+                before_120,
+
+            ],
+
+        }
+    )
+
+
+# ============================================================
+# MARKET TYPE CONTRIBUTION
+# ============================================================
+
+def market_type_contribution_analysis(
+    scenario_df
+):
+
+    df = scenario_df.copy()
+
+
+    if (
+        "Market Type"
+        not in df.columns
+    ):
+
+        return pd.DataFrame()
+
+
+    total_projected_ns = (
+        df[
+            "Projected Final NS"
+        ]
+        .sum()
+    )
+
+
+    total_target = (
+        df[
+            "FY 26 TGT EQ NS"
+        ]
+        .sum()
+    )
+
+
+    total_current_achievement = (
+        df[
+            "Equity NS Ach YTD June"
+        ]
+        .sum()
+    )
+
+
+    total_qualifying_ns = (
+
+        df.loc[
+            df[
+                "Crosses Threshold"
+            ],
+            "Projected Final NS",
+        ]
+
+        .sum()
+
+    )
+
+
+    result = (
+
+        df
+
+        .groupby(
+            "Market Type",
+            dropna=False,
+        )
+
+        .agg(
+            **{
+
+                "#RMs":
+                    (
+                        "Employee Name",
+                        "size"
+                    ),
+
+                "Eq Target":
+                    (
+                        "FY 26 TGT EQ NS",
+                        "sum"
+                    ),
+
+                "Current Achievement":
+                    (
+                        "Equity NS Ach YTD June",
+                        "sum"
+                    ),
+
+                "Projected NS":
+                    (
+                        "Projected Final NS",
+                        "sum"
+                    ),
+
+                "Currently Qualifying":
+                    (
+                        "Crosses Threshold",
+                        "sum"
+                    ),
+
+                "Average Achievement %":
+                    (
+                        "Projected Achievement %",
+                        "mean"
+                    ),
+
+            }
+        )
+
+        .reset_index()
+
+    )
+
+
+    qualifying_summary = (
+
+        df.loc[
+            df[
+                "Crosses Threshold"
+            ]
+        ]
+
+        .groupby(
+            "Market Type"
+        )[
+            "Projected Final NS"
+        ]
+
+        .sum()
+
+        .rename(
+            "Qualifying Projected NS"
+        )
+
+        .reset_index()
+
+    )
+
+
+    result = result.merge(
+        qualifying_summary,
+        on="Market Type",
+        how="left",
+    )
+
+
+    result[
+        "Qualifying Projected NS"
+    ] = (
+        result[
+            "Qualifying Projected NS"
+        ]
+        .fillna(0)
+    )
+
+
+    result[
+        "Qualification Rate %"
+    ] = np.where(
+
+        result[
+            "#RMs"
+        ]
+        > 0,
+
+        (
+
+            result[
+                "Currently Qualifying"
+            ]
+
+            /
+
+            result[
+                "#RMs"
+            ]
+
+            *
+
+            100
+
+        ),
+
+        0,
+
+    )
+
+
+    if total_target != 0:
+
+        result[
+            "Target Contribution %"
+        ] = (
+
+            result[
+                "Eq Target"
+            ]
+
+            /
+
+            total_target
+
+            *
+
+            100
+
+        )
+
+    else:
+
+        result[
+            "Target Contribution %"
+        ] = 0
+
+
+    if total_current_achievement != 0:
+
+        result[
+            "Current Achievement Contribution %"
+        ] = (
+
+            result[
+                "Current Achievement"
+            ]
+
+            /
+
+            total_current_achievement
+
+            *
+
+            100
+
+        )
+
+    else:
+
+        result[
+            "Current Achievement Contribution %"
+        ] = 0
+
+
+    if total_projected_ns != 0:
+
+        result[
+            "Projected NS Contribution %"
+        ] = (
+
+            result[
+                "Projected NS"
+            ]
+
+            /
+
+            total_projected_ns
+
+            *
+
+            100
+
+        )
+
+    else:
+
+        result[
+            "Projected NS Contribution %"
+        ] = 0
+
+
+    if total_qualifying_ns != 0:
+
+        result[
+            "Qualifying NS Contribution %"
+        ] = (
+
+            result[
+                "Qualifying Projected NS"
+            ]
+
+            /
+
+            total_qualifying_ns
+
+            *
+
+            100
+
+        )
+
+    else:
+
+        result[
+            "Qualifying NS Contribution %"
+        ] = 0
+
+
+    result = result.sort_values(
+        "Projected NS Contribution %",
+        ascending=False,
+    )
+
+
+    total_row = pd.DataFrame(
+        [
+            {
+
+                "Market Type":
+                    "Total",
+
+                "#RMs":
+                    result[
+                        "#RMs"
+                    ].sum(),
+
+                "Eq Target":
+                    result[
+                        "Eq Target"
+                    ].sum(),
+
+                "Current Achievement":
+                    result[
+                        "Current Achievement"
+                    ].sum(),
+
+                "Projected NS":
+                    result[
+                        "Projected NS"
+                    ].sum(),
+
+                "Currently Qualifying":
+                    result[
+                        "Currently Qualifying"
+                    ].sum(),
+
+                "Average Achievement %":
+                    df[
+                        "Projected Achievement %"
+                    ].mean(),
+
+                "Qualifying Projected NS":
+                    result[
+                        "Qualifying Projected NS"
+                    ].sum(),
+
+                "Qualification Rate %":
+                    (
+                        df[
+                            "Crosses Threshold"
+                        ].mean()
+                        *
+                        100
+                    ),
+
+                "Target Contribution %":
+                    100.0,
+
+                "Current Achievement Contribution %":
+                    100.0,
+
+                "Projected NS Contribution %":
+                    100.0,
+
+                "Qualifying NS Contribution %":
+                    100.0,
+
+            }
+        ]
+    )
+
+
+    return pd.concat(
+        [
+            result,
+            total_row,
+        ],
+        ignore_index=True,
+    )
+
+
+# ============================================================
+# INDIVIDUAL CONTRIBUTION BINS
 # ============================================================
 
 def contribution_bins(
@@ -1386,11 +2310,9 @@ def contribution_bins(
     qualifying = (
 
         dataframe[
-
             dataframe[
                 "Crosses Threshold"
             ]
-
         ]
 
         .copy()
@@ -1404,46 +2326,27 @@ def contribution_bins(
 
 
     bins = [
-
         -np.inf,
-
         0.10,
-
         0.25,
-
         0.50,
-
         1,
-
         2,
-
         5,
-
         10,
-
         np.inf,
-
     ]
 
 
     labels = [
-
         "≤0.10%",
-
         "0.10–0.25%",
-
         "0.25–0.50%",
-
         "0.50–1.00%",
-
         "1.00–2.00%",
-
         "2.00–5.00%",
-
         "5.00–10.00%",
-
         ">10.00%",
-
     ]
 
 
@@ -1455,14 +2358,11 @@ def contribution_bins(
             "Contribution %"
         ],
 
-        bins=
-            bins,
+        bins=bins,
 
-        labels=
-            labels,
+        labels=labels,
 
-        include_lowest=
-            True,
+        include_lowest=True,
 
     )
 
@@ -1472,40 +2372,32 @@ def contribution_bins(
         qualifying
 
         .groupby(
-
             "Contribution Bin",
-
             observed=False,
-
         )
 
         .agg(
-
             **{
 
                 "No. of RMs":
-
                     (
                         "Employee Name",
                         "size"
                     ),
 
                 "Projected NS":
-
                     (
                         "Projected Final NS",
                         "sum"
                     ),
 
                 "Contribution %":
-
                     (
                         "Contribution %",
                         "sum"
                     ),
 
             }
-
         )
 
         .reset_index()
@@ -1513,47 +2405,71 @@ def contribution_bins(
     )
 
 
-    return output
+    total_row = pd.DataFrame(
+        [
+            {
+
+                "Contribution Bin":
+                    "Total",
+
+                "No. of RMs":
+                    output[
+                        "No. of RMs"
+                    ].sum(),
+
+                "Projected NS":
+                    output[
+                        "Projected NS"
+                    ].sum(),
+
+                "Contribution %":
+                    output[
+                        "Contribution %"
+                    ].sum(),
+
+            }
+        ]
+    )
+
+
+    return pd.concat(
+        [
+            output,
+            total_row,
+        ],
+        ignore_index=True,
+    )
 
 
 # ============================================================
-# SCENARIO PANEL
+# PAGE 1 SCENARIO PANEL
 # ============================================================
 
 def scenario_panel(
-
     dataframe,
-
     name,
-
     threshold,
-
     months,
-
     uplift,
-
     market,
-
 ):
 
-    qualifying = dataframe[
-
+    qualifying = (
         dataframe[
-            "Crosses Threshold"
+            dataframe[
+                "Crosses Threshold"
+            ]
         ]
+    )
 
-    ]
 
-
-    non_qualifying = dataframe[
-
-        ~
-
+    non_qualifying = (
         dataframe[
-            "Crosses Threshold"
+            ~dataframe[
+                "Crosses Threshold"
+            ]
         ]
-
-    ]
+    )
 
 
     hit_rate = (
@@ -1576,7 +2492,8 @@ def scenario_panel(
             dataframe
         )
 
-        else 0
+        else
+        0
 
     )
 
@@ -1595,6 +2512,10 @@ def scenario_panel(
     )
 
 
+    # ========================================================
+    # KPI ROW
+    # ========================================================
+
     columns = st.columns(
         6
     )
@@ -1604,109 +2525,76 @@ def scenario_panel(
 
         (
             "RMs Analysed",
-
             len(
                 dataframe
             ),
-
             market,
-
             False,
         ),
 
         (
             "RMs Crossing",
-
             len(
                 qualifying
             ),
-
             f"{hit_rate:.1f}% of RMs",
-
             True,
         ),
 
         (
             "Qualifying RM NS",
-
             fmt(
-
                 qualifying[
                     "Projected Final NS"
                 ]
-
                 .sum()
-
             ),
-
             "Crossing threshold",
-
             True,
         ),
 
         (
             "Non-Qualifying NS",
-
             fmt(
-
                 non_qualifying[
                     "Projected Final NS"
                 ]
-
                 .sum()
-
             ),
-
             "Can include negative drag",
-
             False,
         ),
 
         (
             "All RM Projected NS",
-
             fmt(
-
                 dataframe[
                     "Projected Final NS"
                 ]
-
                 .sum()
-
             ),
-
             (
                 "Target "
                 +
                 fmt(
-
                     dataframe[
                         "FY 26 TGT EQ NS"
                     ]
-
                     .sum()
-
                 )
             ),
-
             False,
         ),
 
         (
             "Median Achievement",
-
             pct(
-
                 dataframe[
                     "Projected Achievement %"
                 ]
-
                 .median()
-
             ),
-
             "Projected FY achievement",
-
             False,
         ),
 
@@ -1750,77 +2638,201 @@ Achievement % =
 projected final NS ÷
 FY target × 100.
 
+<br>
+
+Contribution % =
+individual qualifying RM projected NS ÷
+total qualifying projected NS.
+
 </div>
 """
     )
 
 
-    left, right = st.columns(
-
-        2,
-
-        gap=
-            "large",
-
-    )
-
-
-    with left:
-
-        st.plotly_chart(
-
-            top_contributors(
-                dataframe
-            ),
-
-            config={
-                "displayModeBar":
-                    False
-            },
-
-        )
-
-
-    with right:
-
-        st.plotly_chart(
-
-            achievement_hist(
-
-                dataframe,
-
-                threshold,
-
-            ),
-
-            config={
-                "displayModeBar":
-                    False
-            },
-
-        )
-
-
     # ========================================================
-    # IMPORTANT
-    #
-    # ONLY ONE CONTRIBUTION TABLE IS DRAWN
+    # BELL CURVE TABLE
     # ========================================================
 
     section(
 
-        "Contribution Bins",
+        "Bell Curve Analysis",
 
         (
-            "How many achievers sit in each "
-            "contribution band."
+            "Projected Achievement % is grouped around the actual "
+            "population mean and standard deviation. The normal-curve "
+            "reference is shown only as a benchmark."
         ),
 
     )
 
 
-    bins = contribution_bins(
+    (
+        bell_table,
+        bell_mean,
+        bell_median,
+        bell_std,
+    ) = bell_curve_analysis(
         dataframe
+    )
+
+
+    bell_kpis = st.columns(
+        4
+    )
+
+
+    with bell_kpis[0]:
+
+        kpi(
+            "Mean Achievement",
+            pct(
+                bell_mean
+            ),
+            "Average projected achievement",
+            False,
+        )
+
+
+    with bell_kpis[1]:
+
+        kpi(
+            "Median Achievement",
+            pct(
+                bell_median
+            ),
+            "50th percentile RM",
+            False,
+        )
+
+
+    with bell_kpis[2]:
+
+        kpi(
+            "Standard Deviation",
+            pct(
+                bell_std
+            ),
+            "Spread of RM achievement",
+            False,
+        )
+
+
+    with bell_kpis[3]:
+
+        above_mean_count = int(
+            (
+                dataframe[
+                    "Projected Achievement %"
+                ]
+                >=
+                bell_mean
+            )
+            .sum()
+        )
+
+
+        above_share = (
+
+            above_mean_count
+
+            /
+
+            len(
+                dataframe
+            )
+
+            *
+
+            100
+
+            if len(
+                dataframe
+            )
+
+            else
+            0
+
+        )
+
+
+        kpi(
+            "RMs Above Mean",
+            f"{above_mean_count:,}",
+            f"{above_share:.1f}% of RMs",
+            True,
+        )
+
+
+    if bell_table.empty:
+
+        st.info(
+            "Bell curve analysis is unavailable."
+        )
+
+    else:
+
+        showdf(
+            bell_table
+        )
+
+
+    # ========================================================
+    # MARKET TYPE CONTRIBUTION
+    # ========================================================
+
+    section(
+
+        "Market Type Contribution Analysis",
+
+        (
+            "Contribution of T2, T6, B30, EM, T30 and other "
+            "market types to target, current achievement, "
+            "projected NS and qualifying NS."
+        ),
+
+    )
+
+
+    market_table = (
+        market_type_contribution_analysis(
+            dataframe
+        )
+    )
+
+
+    if market_table.empty:
+
+        st.info(
+            "Market Type data is not available."
+        )
+
+    else:
+
+        showdf(
+            market_table
+        )
+
+
+    # ========================================================
+    # INDIVIDUAL RM CONTRIBUTION BINS
+    # ========================================================
+
+    section(
+
+        "Individual RM Contribution Bins",
+
+        (
+            "Among qualifying RMs only, this shows how many "
+            "people sit in each sales-contribution band."
+        ),
+
+    )
+
+
+    bins = (
+        contribution_bins(
+            dataframe
+        )
     )
 
 
@@ -1830,7 +2842,6 @@ FY target × 100.
             "No qualifying RMs."
         )
 
-
     else:
 
         showdf(
@@ -1838,15 +2849,13 @@ FY target × 100.
         )
 
 
+    # ========================================================
+    # QUALIFYING RM DETAIL
+    # ========================================================
+
     section(
-
         "Qualifying RM Detail",
-
-        (
-            "RM-level output for "
-            "the selected filters."
-        ),
-
+        "RM-level output for the selected filters.",
     )
 
 
@@ -1856,65 +2865,44 @@ FY target × 100.
             "No qualifying RMs."
         )
 
-
     else:
 
         display_columns = [
-
             "Emp Code",
-
             "Employee Name",
-
             "Market Type",
-
         ]
 
 
         display_columns += [
-
             column
-
-            for column in FILTER_COLS
-
+            for column
+            in FILTER_COLS
             if column
             in qualifying.columns
-
         ]
 
 
         display_columns += [
-
             "FY 26 TGT EQ NS",
-
             "Equity NS Ach YTD June",
-
             "Current Monthly RR",
-
             "Scenario Monthly RR",
-
             "Projected Final NS",
-
             "Projected Achievement %",
-
             "Contribution %",
-
         ]
 
 
         showdf(
 
             qualifying[
-
                 display_columns
-
             ]
 
             .sort_values(
-
                 "Contribution %",
-
                 ascending=False,
-
             ),
 
             520,
@@ -1923,119 +2911,125 @@ FY target × 100.
 
 
 # ============================================================
-# OPTION 1 TARGET BUCKETING
+# TARGET BUCKET OPTION 1
 # ============================================================
 
 def bucket_table_option1(
-
     base_df,
-
     step=5.0,
-
     top=50.0,
-
 ):
 
     target = (
-
         base_df[
             "FY 26 TGT EQ NS"
         ]
-
     )
 
 
     rows = []
+    upper_bounds = []
+
+    current = (
+        step
+    )
 
 
-    lower = 0.0
+    while current < top:
 
-    upper = step
+        upper_bounds.append(
+            current
+        )
+
+        current += (
+            step
+        )
 
 
-    while upper <= top + 1e-9:
+    upper_bounds.append(
+        top
+    )
+
+
+    lower = (
+        0.0
+    )
+
+
+    for upper in upper_bounds:
 
         mask = (
 
-            (target > lower)
+            (
+                target
+                >
+                lower
+            )
 
             &
 
-            (target <= upper)
+            (
+                target
+                <=
+                upper
+            )
 
         )
 
 
         rows.append(
-
             {
 
                 "Current Target Bucketing":
-
                     f"Upto {upper:g}",
 
-
                 "#RMs":
-
                     int(
                         mask.sum()
                     ),
 
-
                 "Eq Target":
-
                     target[
                         mask
                     ].sum(),
 
             }
-
         )
 
 
-        lower = upper
-
-        upper += step
+        lower = (
+            upper
+        )
 
 
     mask = (
-
         target
         >
         top
-
     )
 
 
     rows.append(
-
         {
 
             "Current Target Bucketing":
-
                 f"Above {top:g}",
 
-
             "#RMs":
-
                 int(
                     mask.sum()
                 ),
 
-
             "Eq Target":
-
                 target[
                     mask
                 ].sum(),
 
         }
-
     )
 
 
     rows.append(
-
         {
 
             "Current Target Bucketing":
@@ -2050,7 +3044,6 @@ def bucket_table_option1(
                 target.sum(),
 
         }
-
     )
 
 
@@ -2060,49 +3053,34 @@ def bucket_table_option1(
 
 
 # ============================================================
-# OPTION 2
-#
-# DEFAULT:
-# <= 6.5
-# > 6.5
+# TARGET BUCKET OPTION 2
 # ============================================================
 
 def bucket_table_option2(
-
     base_df,
-
     current_scenario,
-
     cutoff=6.5,
-
 ):
 
     target = (
-
         base_df[
             "FY 26 TGT EQ NS"
         ]
-
     )
 
 
     achieved = (
-
         base_df[
             "Equity NS Ach YTD June"
         ]
-
     )
 
 
     qualifies = (
-
         current_scenario[
             "Crosses Threshold"
         ]
-
         .to_numpy()
-
     )
 
 
@@ -2112,23 +3090,17 @@ def bucket_table_option2(
     specifications = [
 
         (
-
             f"Upto {cutoff:g} crores",
-
             target
             <=
             cutoff,
-
         ),
 
         (
-
             f"{cutoff:g} and above",
-
             target
             >
             cutoff,
-
         ),
 
     ]
@@ -2136,59 +3108,41 @@ def bucket_table_option2(
 
     for label, mask in specifications:
 
-
         rows.append(
-
             {
 
                 "Current Target":
                     label,
 
-
                 "#RMs":
-
                     int(
                         mask.sum()
                     ),
 
-
                 "Eq Target":
-
                     target[
                         mask
                     ].sum(),
 
-
                 "Current Achievement":
-
                     achieved[
                         mask
                     ].sum(),
 
-
                 "Currently Qualifying":
-
                     int(
-
                         np.sum(
-
                             qualifies
-
                             &
-
                             mask.to_numpy()
-
                         )
-
                     ),
 
             }
-
         )
 
 
     rows.append(
-
         {
 
             "Current Target":
@@ -2206,19 +3160,14 @@ def bucket_table_option2(
                 achieved.sum(),
 
             "Currently Qualifying":
-
                 int(
-
                     current_scenario[
                         "Crosses Threshold"
                     ]
-
                     .sum()
-
                 ),
 
         }
-
     )
 
 
@@ -2228,72 +3177,56 @@ def bucket_table_option2(
 
 
 # ============================================================
-# OPTION 3
+# TARGET BUCKET OPTION 3
 # ============================================================
 
 def bucket_table_option3(
-
     base_df,
-
     cutoff_1=5.0,
-
     cutoff_2=10.0,
-
 ):
 
     target = (
-
         base_df[
             "FY 26 TGT EQ NS"
         ]
-
     )
 
 
     specifications = [
 
         (
-
             f"Upto {cutoff_1:g} crores",
 
             target
             <=
             cutoff_1,
-
         ),
 
         (
-
             f"{cutoff_1:g} to {cutoff_2:g} crores",
 
             (
-
                 target
                 >
                 cutoff_1
-
             )
 
             &
 
             (
-
                 target
                 <=
                 cutoff_2
-
             ),
-
         ),
 
         (
-
             f"Above {cutoff_2:g} crores",
 
             target
             >
             cutoff_2,
-
         ),
 
     ]
@@ -2304,33 +3237,27 @@ def bucket_table_option3(
 
     for label, mask in specifications:
 
-
         rows.append(
-
             {
 
                 "Current Target":
                     label,
 
                 "#RMs":
-
                     int(
                         mask.sum()
                     ),
 
                 "Eq Target":
-
                     target[
                         mask
                     ].sum(),
 
             }
-
         )
 
 
     rows.append(
-
         {
 
             "Current Target":
@@ -2345,7 +3272,6 @@ def bucket_table_option3(
                 target.sum(),
 
         }
-
     )
 
 
@@ -2355,20 +3281,14 @@ def bucket_table_option3(
 
 
 # ============================================================
-# PAGE 1
-# QUALIFICATION + BUDGET PLANNER
+# QUALIFICATION + TRAVEL BUDGET
 # ============================================================
 
 def qualification_budget_section(
-
     base_df,
-
     current_scenario,
-
     uplift_scenario,
-
     projection_months,
-
 ):
 
     section(
@@ -2376,23 +3296,19 @@ def qualification_budget_section(
         "Qualification & Travel Budget Planner",
 
         (
-            "Convert qualification counts into "
-            "an editable trip budget and inspect "
-            "the RM population through different "
-            "target-capacity buckets."
+            "Convert qualification counts into an editable "
+            "foreign-trip budget and inspect the RM population "
+            "through different current-target buckets."
         ),
 
     )
 
 
     qualified_count = int(
-
         current_scenario[
             "Crosses Threshold"
         ]
-
         .sum()
-
     )
 
 
@@ -2401,7 +3317,6 @@ def qualification_budget_section(
         uplift_scenario[
             "Projected Final NS"
         ]
-
         .sum()
 
         -
@@ -2409,24 +3324,17 @@ def qualification_budget_section(
         current_scenario[
             "Projected Final NS"
         ]
-
         .sum()
 
     )
 
 
     control_1, control_2, metric_1, metric_2 = (
-
         st.columns(
             4
         )
-
     )
 
-
-    # ========================================================
-    # EDITABLE PEOPLE COUNT
-    # ========================================================
 
     with control_1:
 
@@ -2436,17 +3344,19 @@ def qualification_budget_section(
 
             min_value=0,
 
-            max_value=
-                max(
-                    len(base_df),
-                    1
+            max_value=max(
+                len(
+                    base_df
                 ),
+                1
+            ),
 
-            value=
-                min(
-                    40,
-                    len(base_df)
-                ),
+            value=min(
+                40,
+                len(
+                    base_df
+                )
+            ),
 
             step=1,
 
@@ -2455,10 +3365,6 @@ def qualification_budget_section(
 
         )
 
-
-    # ========================================================
-    # EDITABLE COST PER PERSON
-    # ========================================================
 
     with control_2:
 
@@ -2479,14 +3385,6 @@ def qualification_budget_section(
 
         )
 
-
-    # ========================================================
-    # BUDGET
-    #
-    # 40 × 3 lakh =
-    # 120 lakh =
-    # 1.2 crore
-    # ========================================================
 
     total_budget_crore = (
 
@@ -2519,81 +3417,67 @@ def qualification_budget_section(
 
         )
 
-
     else:
 
-        budget_percentage = np.nan
+        budget_percentage = (
+            np.nan
+        )
 
 
     with metric_1:
 
         kpi(
-
             "Trip Budget",
-
             f"₹{total_budget_crore:,.2f} Cr",
-
             (
                 f"{travelers} people × "
                 f"₹{cost_lakh:.2f} lakh"
             ),
-
             True,
-
         )
 
 
     with metric_2:
 
         kpi(
-
             "Budget / Incremental NS",
-
             pct(
                 budget_percentage
             ),
-
-            (
-                "Scenario 2 incremental "
-                "NS used as denominator"
-            ),
-
+            "Scenario 2 incremental NS used as denominator",
             False,
-
         )
 
 
     st.html(
-
         f"""
 <div class="callout">
 
 <b style="color:#D4AF37">
-Current qualification:
+Current qualification
 </b>
 
-{qualified_count:,} RMs are projected to
-cross 100% at the current run rate
-through {MONTHS[projection_months]}.
+<br>
+
+{qualified_count:,} RMs are projected to cross
+100% at the current run rate through
+{MONTHS[projection_months]}.
 
 <br><br>
 
-The travel count is intentionally editable.
-
-For example:
+Example:
 
 <b style="color:#F3F0E7">
-40 people × ₹3 lakh = ₹1.20 Cr.
+40 people × ₹3 lakh = ₹1.20 Cr
 </b>
 
 </div>
 """
-
     )
 
 
     # ========================================================
-    # BUCKET TABLES
+    # TARGET BUCKET OPTIONS
     # ========================================================
 
     section(
@@ -2601,21 +3485,17 @@ For example:
         "Current Target Bucketing Options",
 
         (
-            "These cuts help you understand how "
-            "many RMs sit in small, medium and "
-            "large target books before deciding "
-            "a fair BonVoyage stretch."
+            "Compare alternative ways of splitting the RM "
+            "population by current Equity Net Sales target."
         ),
 
     )
 
 
     option_1_column, option_2_column, option_3_column = (
-
         st.columns(
             3
         )
-
     )
 
 
@@ -2625,11 +3505,8 @@ For example:
 
     with option_1_column:
 
-
         st.markdown(
-
             "#### Option 1 · Detailed Bands"
-
         )
 
 
@@ -2670,14 +3547,12 @@ For example:
         )
 
 
-        option_1 = bucket_table_option1(
-
-            base_df,
-
-            bucket_step,
-
-            last_cutoff,
-
+        option_1 = (
+            bucket_table_option1(
+                base_df,
+                bucket_step,
+                last_cutoff,
+            )
         )
 
 
@@ -2692,11 +3567,8 @@ For example:
 
     with option_2_column:
 
-
         st.markdown(
-
             "#### Option 2 · Two Cohorts"
-
         )
 
 
@@ -2718,14 +3590,12 @@ For example:
         )
 
 
-        option_2 = bucket_table_option2(
-
-            base_df,
-
-            current_scenario,
-
-            option_2_cutoff,
-
+        option_2 = (
+            bucket_table_option2(
+                base_df,
+                current_scenario,
+                option_2_cutoff,
+            )
         )
 
 
@@ -2740,11 +3610,8 @@ For example:
 
     with option_3_column:
 
-
         st.markdown(
-
             "#### Option 3 · Three Cohorts"
-
         )
 
 
@@ -2777,11 +3644,10 @@ For example:
 
             max_value=200.0,
 
-            value=
-                max(
-                    10.0,
-                    option_3_cutoff_1 + 0.5
-                ),
+            value=max(
+                10.0,
+                option_3_cutoff_1 + 0.5
+            ),
 
             step=0.5,
 
@@ -2791,14 +3657,12 @@ For example:
         )
 
 
-        option_3 = bucket_table_option3(
-
-            base_df,
-
-            option_3_cutoff_1,
-
-            option_3_cutoff_2,
-
+        option_3 = (
+            bucket_table_option3(
+                base_df,
+                option_3_cutoff_1,
+                option_3_cutoff_2,
+            )
         )
 
 
@@ -2816,44 +3680,35 @@ For example:
         "Editable Cohort Planning",
 
         (
-            "Change proposed stretch % and "
-            "planned traveler count for each "
-            "target cohort."
+            "Change proposed stretch % and planned traveler "
+            "count for each target cohort."
         ),
 
     )
 
 
     editable_plan = (
-
         option_3
         .iloc[:-1]
         .copy()
-
     )
 
 
     default_stretches = [
-
         35.0,
-
         25.0,
-
         15.0,
-
     ]
 
 
     editable_plan[
         "Proposed Stretch %"
     ] = (
-
         default_stretches[
             :len(
                 editable_plan
             )
         ]
-
     )
 
 
@@ -2866,9 +3721,8 @@ For example:
             int(value)
         )
 
-        for value in
-
-        editable_plan[
+        for value
+        in editable_plan[
             "#RMs"
         ]
 
@@ -2891,55 +3745,33 @@ For example:
         column_config={
 
             "Proposed Stretch %":
-
                 st.column_config.NumberColumn(
-
                     "Proposed Stretch %",
-
                     min_value=0.0,
-
                     max_value=200.0,
-
                     step=1.0,
-
                 ),
 
-
             "Planned Travelers":
-
                 st.column_config.NumberColumn(
-
                     "Planned Travelers",
-
                     min_value=0,
-
                     step=1,
-
                 ),
 
         },
 
         disabled=[
-
             "Current Target",
-
             "#RMs",
-
             "Eq Target",
-
         ],
 
     )
 
 
-    # ========================================================
-    # CALCULATED EDITABLE PLAN
-    # ========================================================
-
     calculated_plan = (
-
         edited_plan.copy()
-
     )
 
 
@@ -2992,15 +3824,19 @@ For example:
         ]
         > 0,
 
-        calculated_plan[
-            "Implied Extra Target"
-        ]
+        (
 
-        /
+            calculated_plan[
+                "Implied Extra Target"
+            ]
 
-        calculated_plan[
-            "Trip Budget (Cr)"
-        ],
+            /
+
+            calculated_plan[
+                "Trip Budget (Cr)"
+            ]
+
+        ),
 
         np.nan,
 
@@ -3013,8 +3849,7 @@ For example:
 
 
 # ============================================================
-# PAGE 2
-# NEW INSIGHTS
+# PAGE 2 SUMMARY
 # ============================================================
 
 def summary_by(
@@ -3032,11 +3867,8 @@ def summary_by(
         dataframe
 
         .groupby(
-
             dimension,
-
             dropna=False,
-
         )
 
         .agg(
@@ -3094,40 +3926,29 @@ def summary_by(
 
 
     return (
-
         result
-
         .sort_values(
-
             "Projected_NS",
-
             ascending=False,
-
         )
-
     )
 
 
+# ============================================================
+# PAGE 2
+# ============================================================
+
 def new_insights(
-
     base,
-
     months,
-
     market,
-
 ):
 
     dataframe = scenario(
-
         base,
-
         months,
-
         0,
-
         100,
-
     )
 
 
@@ -3164,110 +3985,68 @@ def new_insights(
     metrics = [
 
         (
-
             "FY Target",
-
             fmt(
-
                 dataframe[
                     "FY 26 TGT EQ NS"
                 ]
-
                 .sum()
-
             ),
-
             market,
-
             False,
-
         ),
 
         (
-
             "Apr-Jun Achievement",
-
             fmt(
-
                 dataframe[
                     "Equity NS Ach YTD June"
                 ]
-
                 .sum()
-
             ),
-
             "3-month actual",
-
             False,
-
         ),
 
         (
-
             "Projected NS",
-
             fmt(
-
                 dataframe[
                     "Projected Final NS"
                 ]
-
                 .sum()
-
             ),
-
             MONTHS[
                 months
             ],
-
             True,
-
         ),
 
         (
-
             "RMs ≥100%",
-
             int(
-
                 dataframe[
                     "Crosses Threshold"
                 ]
-
                 .sum()
-
             ),
-
             (
-
                 f"{dataframe['Crosses Threshold'].mean() * 100:.1f}% "
                 "hit-rate"
-
             ),
-
             True,
-
         ),
 
         (
-
             "Median Achievement",
-
             pct(
-
                 dataframe[
                     "Projected Achievement %"
                 ]
-
                 .median()
-
             ),
-
             "Current-RR projection",
-
             False,
-
         ),
 
     ]
@@ -3285,7 +4064,7 @@ def new_insights(
 
 
     # ========================================================
-    # MARKET / ZONE / REGION CUTS
+    # CUT TABLES
     # ========================================================
 
     for dimension, title in [
@@ -3314,24 +4093,18 @@ def new_insights(
                 f"{title} Cut",
 
                 (
-                    f"Target, YTD, projection "
-                    f"and hit-rate by "
-                    f"{title.lower()}."
+                    f"Target, YTD, projection and "
+                    f"hit-rate by {title.lower()}."
                 ),
 
             )
 
 
             showdf(
-
                 summary_by(
-
                     dataframe,
-
                     dimension,
-
                 )
-
             )
 
 
@@ -3344,8 +4117,8 @@ def new_insights(
         "Target vs Projected NS",
 
         (
-            "Above the diagonal means "
-            "the RM is projected to beat target."
+            "Dots above the diagonal are projected "
+            "to beat their existing target."
         ),
 
     )
@@ -3437,13 +4210,8 @@ def new_insights(
             "lines",
 
         line=dict(
-
-            color=
-                GOLD2,
-
-            dash=
-                "dash",
-
+            color=GOLD2,
+            dash="dash",
         ),
 
         name=
@@ -3453,28 +4221,21 @@ def new_insights(
 
 
     fig.update_layout(
-
         xaxis_title=
             "FY Target",
-
         yaxis_title=
             "Projected Final NS",
-
     )
 
 
     st.plotly_chart(
-
         style(
             fig,
             430
         ),
-
         config={
-            "displayModeBar":
-                False
+            "displayModeBar": False
         },
-
     )
 
 
@@ -3547,48 +4308,45 @@ def new_insights(
     # QUICK WINS
     # ========================================================
 
-    quick_wins = dataframe[
+    quick_wins = (
 
-        (
+        dataframe[
 
-            dataframe[
-                "Projected Achievement %"
-            ]
-
-            >=
-            80
-
-        )
-
-        &
-
-        (
-
-            dataframe[
-                "Projected Achievement %"
-            ]
-
-            <
-            100
-
-        )
-
-        &
-
-        (
-
-            dataframe[
-                "Required RR Uplift %"
-            ]
-
-            .between(
-                0,
-                30
+            (
+                dataframe[
+                    "Projected Achievement %"
+                ]
+                >=
+                80
             )
 
-        )
+            &
 
-    ].copy()
+            (
+                dataframe[
+                    "Projected Achievement %"
+                ]
+                <
+                100
+            )
+
+            &
+
+            (
+                dataframe[
+                    "Required RR Uplift %"
+                ]
+                .between(
+                    0,
+                    30
+                )
+            )
+
+        ]
+
+        .copy()
+
+    )
 
 
     section(
@@ -3596,9 +4354,8 @@ def new_insights(
         "Quick Wins",
 
         (
-            "RMs projected at 80–100% "
-            "who need ≤30% future run-rate "
-            "uplift to reach target."
+            "RMs projected at 80–100% who need "
+            "≤30% future run-rate uplift to reach target."
         ),
 
     )
@@ -3607,70 +4364,47 @@ def new_insights(
     if quick_wins.empty:
 
         st.info(
-
             "No quick wins under current filters."
-
         )
-
 
     else:
 
         display_columns = [
-
             "Emp Code",
-
             "Employee Name",
-
             "Market Type",
-
         ]
 
 
         display_columns += [
-
             column
-
-            for column in [
-
+            for column
+            in [
                 "ZONE",
-
                 "REGION",
-
             ]
-
             if column
             in quick_wins.columns
-
         ]
 
 
         display_columns += [
-
             "FY 26 TGT EQ NS",
-
             "Projected Final NS",
-
             "Projected Achievement %",
-
             "Required RR Uplift %",
-
         ]
 
 
         showdf(
 
             quick_wins[
-
                 display_columns
-
             ]
 
             .sort_values(
-
                 "FY 26 TGT EQ NS",
-
                 ascending=False,
-
             ),
 
             420,
@@ -3682,16 +4416,19 @@ def new_insights(
     # HIGH VALUE RISK
     # ========================================================
 
-    risk = dataframe[
+    risk = (
 
         dataframe[
-            "Projected Achievement %"
+            dataframe[
+                "Projected Achievement %"
+            ]
+            <
+            80
         ]
 
-        <
-        80
+        .copy()
 
-    ].copy()
+    )
 
 
     risk[
@@ -3718,9 +4455,8 @@ def new_insights(
         "High-Value Target at Risk",
 
         (
-            "Prioritize absolute sales value "
-            "at risk rather than percentage "
-            "miss alone."
+            "Prioritize absolute sales value at risk "
+            "rather than percentage miss alone."
         ),
 
     )
@@ -3729,53 +4465,35 @@ def new_insights(
     if risk.empty:
 
         st.success(
-
             "No RMs below 80%."
-
         )
-
 
     else:
 
         display_columns = [
-
             "Emp Code",
-
             "Employee Name",
-
             "Market Type",
-
         ]
 
 
         display_columns += [
-
             column
-
-            for column in [
-
+            for column
+            in [
                 "ZONE",
-
                 "REGION",
-
             ]
-
             if column
             in risk.columns
-
         ]
 
 
         display_columns += [
-
             "FY 26 TGT EQ NS",
-
             "Projected Final NS",
-
             "Projected Achievement %",
-
             "Target at Risk",
-
         ]
 
 
@@ -3784,15 +4502,10 @@ def new_insights(
             risk
 
             .nlargest(
-
                 30,
-
                 "Target at Risk",
-
             )[
-
                 display_columns
-
             ],
 
             420,
@@ -3801,42 +4514,29 @@ def new_insights(
 
 
 # ============================================================
-# PAGE 3 BONVOYAGE
+# BONVOYAGE MODEL
 # ============================================================
 
 def bonvoyage_model(
-
     base,
-
     months,
-
     min_uplift,
-
     max_uplift,
-
     allocation,
-
     trip_lakh,
-
     max_feasible,
-
 ):
 
     dataframe = scenario(
-
         base,
-
         months,
-
         0,
-
         100,
-
     )
 
 
     # ========================================================
-    # EXPECTED WITHOUT INCENTIVE
+    # NO-INCENTIVE EXPECTATION
     # ========================================================
 
     dataframe[
@@ -3867,19 +4567,15 @@ def bonvoyage_model(
         ]
 
         .rank(
-
             pct=True,
-
-            method=
-                "average",
-
+            method="average",
         )
 
     )
 
 
     # ========================================================
-    # PEER PERFORMANCE
+    # PEER PERFORMANCE PERCENTILE
     # ========================================================
 
     dataframe[
@@ -3895,12 +4591,8 @@ def bonvoyage_model(
         ]
 
         .rank(
-
             pct=True,
-
-            method=
-                "average",
-
+            method="average",
         )
 
         .fillna(
@@ -3921,11 +4613,8 @@ def bonvoyage_model(
         120
 
     ).clip(
-
         0,
-
         1,
-
     ).fillna(
         0
     )
@@ -3944,15 +4633,11 @@ def bonvoyage_model(
         *
 
         (
-
             1
-
             -
-
             dataframe[
                 "Target Size Percentile"
             ]
-
         )
 
         +
@@ -3974,16 +4659,13 @@ def bonvoyage_model(
         momentum
 
     ).clip(
-
         0,
-
         1,
-
     )
 
 
     # ========================================================
-    # PERSONALIZED RUN RATE UPLIFT
+    # PLANNED FUTURE RR UPLIFT
     # ========================================================
 
     dataframe[
@@ -3995,13 +4677,9 @@ def bonvoyage_model(
         +
 
         (
-
             max_uplift
-
             -
-
             min_uplift
-
         )
 
         *
@@ -4056,6 +4734,10 @@ def bonvoyage_model(
     )
 
 
+    # ========================================================
+    # STRETCH TARGET
+    # ========================================================
+
     dataframe[
         "BonVoyage Stretch Target"
     ] = np.maximum(
@@ -4072,7 +4754,7 @@ def bonvoyage_model(
 
 
     # ========================================================
-    # GENUINELY INCREMENTAL SALES
+    # TRUE INCREMENTAL NS
     # ========================================================
 
     dataframe[
@@ -4093,6 +4775,10 @@ def bonvoyage_model(
         lower=0
     )
 
+
+    # ========================================================
+    # REQUIRED FUTURE RUN RATE
+    # ========================================================
 
     dataframe[
         "Required Future RR for BonVoyage"
@@ -4160,13 +4846,9 @@ def bonvoyage_model(
     # ========================================================
 
     trip_cost_crore = (
-
         trip_lakh
-
         /
-
         100
-
     )
 
 
@@ -4197,13 +4879,17 @@ def bonvoyage_model(
         >
         0,
 
-        dataframe[
-            "Trip Budget Ceiling"
-        ]
+        (
 
-        /
+            dataframe[
+                "Trip Budget Ceiling"
+            ]
 
-        trip_cost_crore,
+            /
+
+            trip_cost_crore
+
+        ),
 
         np.inf,
 
@@ -4215,58 +4901,43 @@ def bonvoyage_model(
     ] = (
 
         (
-
             dataframe[
                 "Trip Funding Coverage x"
             ]
-
             >=
             1
-
         )
 
         &
 
         (
-
             dataframe[
                 "Required Future RR Uplift %"
             ]
-
             .between(
-
                 0,
-
-                max_feasible,
-
+                max_feasible
             )
-
         )
 
         &
 
         (
-
             dataframe[
                 "Incremental NS Required"
             ]
-
             >
             0
-
         )
 
         &
 
         (
-
             dataframe[
                 "Current Monthly RR"
             ]
-
             >
             0
-
         )
 
     )
@@ -4275,52 +4946,39 @@ def bonvoyage_model(
     return dataframe
 
 
+# ============================================================
+# BONVOYAGE PAGE
+# ============================================================
+
 def bonvoyage_page(
-
     base,
-
     months,
-
     market,
-
     min_uplift,
-
     max_uplift,
-
     allocation,
-
     trip_lakh,
-
     max_feasible,
-
 ):
 
     dataframe = bonvoyage_model(
-
         base,
-
         months,
-
         min_uplift,
-
         max_uplift,
-
         allocation,
-
         trip_lakh,
-
         max_feasible,
-
     )
 
 
-    candidates = dataframe[
-
+    candidates = (
         dataframe[
-            "Recommended Candidate"
+            dataframe[
+                "Recommended Candidate"
+            ]
         ]
-
-    ]
+    )
 
 
     st.html(
@@ -4338,10 +4996,8 @@ def bonvoyage_page(
     <div class="hero-sub">
 
         Targets are personalized by RM capacity.
-
-        Only sales above the higher of
-        official target or current-run-rate
-        expectation are treated as incremental.
+        Sales the RM was already expected to generate
+        are not counted as BonVoyage incremental sales.
 
     </div>
 
@@ -4358,100 +5014,60 @@ def bonvoyage_page(
     metrics = [
 
         (
-
             "Official Target",
-
             fmt(
-
                 dataframe[
                     "FY 26 TGT EQ NS"
                 ]
-
                 .sum()
-
             ),
-
             market,
-
             False,
-
         ),
 
         (
-
             "No-Incentive Expected",
-
             fmt(
-
                 dataframe[
                     "No-Incentive Expected NS"
                 ]
-
                 .sum()
-
             ),
-
             "What we expect anyway",
-
             False,
-
         ),
 
         (
-
             "BonVoyage Target",
-
             fmt(
-
                 dataframe[
                     "BonVoyage Stretch Target"
                 ]
-
                 .sum()
-
             ),
-
             "Personalized stretch",
-
             True,
-
         ),
 
         (
-
             "Incremental NS",
-
             fmt(
-
                 dataframe[
                     "Incremental NS Required"
                 ]
-
                 .sum()
-
             ),
-
             "Above no-incentive baseline",
-
             True,
-
         ),
 
         (
-
             "Recommended Candidates",
-
             len(
                 candidates
             ),
-
-            (
-                f"≤{max_feasible}% required "
-                "RR uplift"
-            ),
-
+            f"≤{max_feasible}% required RR uplift",
             False,
-
         ),
 
     ]
@@ -4468,89 +5084,226 @@ def bonvoyage_page(
             )
 
 
+    # ========================================================
+    # BONVOYAGE SCATTER
+    # ========================================================
+
+    section(
+
+        "BonVoyage Target vs No-Incentive Baseline",
+
+        (
+            "The farther a point sits above the diagonal, "
+            "the larger the genuinely incremental target."
+        ),
+
+    )
+
+
+    fig = go.Figure(
+
+        go.Scatter(
+
+            x=
+                dataframe[
+                    "No-Incentive Expected NS"
+                ],
+
+            y=
+                dataframe[
+                    "BonVoyage Stretch Target"
+                ],
+
+            mode=
+                "markers",
+
+            marker=dict(
+
+                size=np.clip(
+
+                    7
+
+                    +
+
+                    dataframe[
+                        "Incremental NS Required"
+                    ]
+
+                    .clip(
+                        lower=0
+                    )
+
+                    *
+
+                    2,
+
+                    7,
+
+                    28,
+
+                ),
+
+                color=
+                    dataframe[
+                        "Required Future RR Uplift %"
+                    ],
+
+                colorscale=
+                    "Cividis",
+
+                showscale=True,
+
+                colorbar=dict(
+                    title=
+                        "RR uplift %"
+                ),
+
+            ),
+
+            text=
+                dataframe[
+                    "Employee Name"
+                ],
+
+            hovertemplate=(
+
+                "<b>%{text}</b>"
+
+                "<br>No-incentive %{x:,.2f}"
+
+                "<br>BonVoyage %{y:,.2f}"
+
+                "<extra></extra>"
+
+            ),
+
+        )
+
+    )
+
+
+    maximum = max(
+
+        dataframe[
+            "BonVoyage Stretch Target"
+        ].max(),
+
+        dataframe[
+            "No-Incentive Expected NS"
+        ].max(),
+
+        1,
+
+    )
+
+
+    fig.add_scatter(
+
+        x=[
+            0,
+            maximum
+        ],
+
+        y=[
+            0,
+            maximum
+        ],
+
+        mode=
+            "lines",
+
+        line=dict(
+            color=GOLD2,
+            dash="dash",
+        ),
+
+        name=
+            "No stretch",
+
+    )
+
+
+    fig.update_layout(
+        xaxis_title=
+            "No-Incentive Expected NS",
+        yaxis_title=
+            "BonVoyage Stretch Target",
+    )
+
+
+    st.plotly_chart(
+
+        style(
+            fig,
+            460
+        ),
+
+        config={
+            "displayModeBar": False
+        },
+
+    )
+
+
+    # ========================================================
+    # RM TARGET BOOK
+    # ========================================================
+
     section(
 
         "RM-Level BonVoyage Target Book",
 
         (
-            "Personalized target, incremental "
-            "ask, trip-funding coverage "
-            "and eligibility."
+            "Personalized target, incremental ask, "
+            "trip-funding coverage and eligibility."
         ),
 
     )
 
 
     display_columns = [
-
         "Emp Code",
-
         "Employee Name",
-
         "Market Type",
-
     ]
 
 
     display_columns += [
-
         column
-
-        for column in [
-
+        for column
+        in [
             "ZONE",
-
             "REGION",
-
         ]
-
         if column
         in dataframe.columns
-
     ]
 
 
     display_columns += [
-
         "FY 26 TGT EQ NS",
-
         "Projected Final NS",
-
         "No-Incentive Expected NS",
-
         "Capacity Score",
-
         "Planned Future RR Uplift %",
-
         "BonVoyage Stretch Target",
-
         "Incremental NS Required",
-
         "Required Future RR Uplift %",
-
         "Trip Budget Ceiling",
-
         "Trip Funding Coverage x",
-
         "Recommended Candidate",
-
     ]
 
 
     showdf(
 
         dataframe[
-
             display_columns
-
         ]
 
         .sort_values(
-
             "Incremental NS Required",
-
             ascending=False,
-
         ),
 
         620,
@@ -4563,13 +5316,9 @@ def bonvoyage_page(
     # ========================================================
 
     for dimension in [
-
         "Market Type",
-
         "ZONE",
-
         "REGION",
-
     ]:
 
         if dimension not in dataframe.columns:
@@ -4582,8 +5331,8 @@ def bonvoyage_page(
             f"{dimension} BonVoyage Economics",
 
             (
-                f"Incremental opportunity "
-                f"and candidates by {dimension}."
+                f"Incremental opportunity and "
+                f"candidates by {dimension}."
             ),
 
         )
@@ -4634,11 +5383,8 @@ def bonvoyage_page(
             .reset_index()
 
             .sort_values(
-
                 "Incremental_NS",
-
                 ascending=False,
-
             )
 
         )
@@ -4668,9 +5414,7 @@ st.html(
     <div class="hero-sub">
 
         Upload the RM workbook once.
-
-        The application reads only the
-        uploaded file.
+        The application reads only the uploaded workbook.
 
     </div>
 
@@ -4680,11 +5424,10 @@ st.html(
 
 
 # ============================================================
-# SIDEBAR NAVIGATION
+# SIDEBAR NAVIGATION + UPLOAD
 # ============================================================
 
 with st.sidebar:
-
 
     st.markdown(
         "### Navigation"
@@ -4696,13 +5439,9 @@ with st.sidebar:
         "Page",
 
         [
-
             "1 · Scenario Lab",
-
             "2 · New Insights",
-
             "3 · BonVoyage",
-
         ],
 
     )
@@ -4725,10 +5464,7 @@ with st.sidebar:
         ],
 
         help=(
-
-            "Upload-only. "
-            "No local Book2.xlsx is read."
-
+            "The app reads only the workbook uploaded here."
         ),
 
     )
@@ -4742,8 +5478,7 @@ if uploaded is None:
 
     st.info(
 
-        "Upload the RM Excel workbook "
-        "from the sidebar. "
+        "Upload the RM Excel workbook from the sidebar. "
         "No stored/local workbook is read."
 
     )
@@ -4759,31 +5494,24 @@ try:
 
     (
         raw,
-
         header_row,
-
         market_type_source,
-
     ) = load_uploaded(
-
         uploaded.getvalue()
-
     )
 
 
 except Exception as error:
 
     st.error(
-
         f"Could not read workbook: {error}"
-
     )
 
     st.stop()
 
 
 # ============================================================
-# CLEAN VALID DATA
+# VALID DATA
 # ============================================================
 
 identity = (
@@ -4831,14 +5559,11 @@ positive_target = (
 excluded_missing = int(
 
     (
-
         identity
-
         &
-
         ~numeric
-
-    ).sum()
+    )
+    .sum()
 
 )
 
@@ -4846,18 +5571,13 @@ excluded_missing = int(
 excluded_target = int(
 
     (
-
         identity
-
         &
-
         numeric
-
         &
-
         ~positive_target
-
-    ).sum()
+    )
+    .sum()
 
 )
 
@@ -4889,37 +5609,33 @@ data = (
 
 with st.sidebar:
 
-
     st.divider()
-
 
     st.markdown(
         "### Global Filters"
     )
 
 
+    # ========================================================
+    # MARKET TYPE
+    # ========================================================
+
     market_values = sorted(
 
         [
-
             value
 
-            for value in
-
-            data[
+            for value
+            in data[
                 "Market Type"
             ]
-
             .dropna()
-
             .astype(str)
-
             .unique()
 
             if value
             !=
             "Unknown"
-
         ]
 
     )
@@ -4945,15 +5661,11 @@ with st.sidebar:
         data = (
 
             data[
-
                 data[
                     "Market Type"
                 ]
-
                 ==
-
                 selected_market_type
-
             ]
 
             .copy()
@@ -4995,13 +5707,9 @@ with st.sidebar:
 
 
     for (
-
         column,
-
         label,
-
         active_default,
-
     ) in filter_definitions:
 
 
@@ -5028,24 +5736,20 @@ with st.sidebar:
 
 
         if (
-
             active_default
-
             and
-
-            "Active"
-            in values
-
+            "Active" in values
         ):
 
             default = [
                 "Active"
             ]
 
-
         else:
 
-            default = values
+            default = (
+                values
+            )
 
 
         selected = st.multiselect(
@@ -5063,15 +5767,12 @@ with st.sidebar:
         data = (
 
             data[
-
                 data[
                     column
                 ]
-
                 .isin(
                     selected
                 )
-
             ]
 
             .copy()
@@ -5080,7 +5781,7 @@ with st.sidebar:
 
 
     # ========================================================
-    # MONTHS
+    # PROJECTION MONTHS
     # ========================================================
 
     st.divider()
@@ -5113,16 +5814,19 @@ with st.sidebar:
     # SCENARIO 2
     # ========================================================
 
-    uplift = 10.0
+    uplift = (
+        10.0
+    )
 
-    threshold = 100.0
+
+    threshold = (
+        100.0
+    )
 
 
     if page == "1 · Scenario Lab":
 
-
         st.divider()
-
 
         st.markdown(
             "### Scenario 2"
@@ -5134,15 +5838,10 @@ with st.sidebar:
             "Increase Current Run Rate By",
 
             [
-
                 "5%",
-
                 "10%",
-
                 "15%",
-
                 "Custom",
-
             ],
 
             index=1,
@@ -5166,16 +5865,13 @@ with st.sidebar:
 
             )
 
-
         else:
 
             uplift = float(
-
                 uplift_choice.replace(
                     "%",
                     ""
                 )
-
             )
 
 
@@ -5198,22 +5894,30 @@ with st.sidebar:
     # BONVOYAGE DEFAULTS
     # ========================================================
 
-    minimum_uplift = 15
+    minimum_uplift = (
+        15
+    )
 
-    maximum_uplift = 60
+    maximum_uplift = (
+        60
+    )
 
-    allocation = 10
+    allocation = (
+        10
+    )
 
-    trip_lakh = 3.0
+    trip_lakh = (
+        3.0
+    )
 
-    maximum_feasible = 50
+    maximum_feasible = (
+        50
+    )
 
 
     if page == "3 · BonVoyage":
 
-
         st.divider()
-
 
         st.markdown(
             "### BonVoyage Economics"
@@ -5237,19 +5941,17 @@ with st.sidebar:
 
             "Maximum Planned Future RR Uplift (%)",
 
-            min_value=
-                max(
-                    minimum_uplift,
-                    10
-                ),
+            min_value=max(
+                minimum_uplift,
+                10
+            ),
 
             max_value=100,
 
-            value=
-                max(
-                    60,
-                    minimum_uplift
-                ),
+            value=max(
+                60,
+                minimum_uplift
+            ),
 
         )
 
@@ -5314,15 +6016,13 @@ with st.sidebar:
 
 
 # ============================================================
-# EMPTY FILTER CHECK
+# EMPTY CHECK
 # ============================================================
 
 if data.empty:
 
     st.warning(
-
         "No RMs remain after filters."
-
     )
 
     st.stop()
@@ -5344,50 +6044,34 @@ market = (
 
 
 # ============================================================
-# PAGE ROUTING
+# PAGE 1
 # ============================================================
 
 if page == "1 · Scenario Lab":
 
 
     scenario_1 = scenario(
-
         data,
-
         months,
-
         0,
-
         100,
-
     )
 
 
     scenario_2 = scenario(
-
         data,
-
         months,
-
         uplift,
-
         threshold,
-
     )
 
 
     tab_1, tab_2, tab_3 = st.tabs(
-
         [
-
             "Scenario 1 · Current Run Rate",
-
             "Scenario 2 · Increased Run Rate",
-
             "Scenario Comparison",
-
         ]
-
     )
 
 
@@ -5397,21 +6081,13 @@ if page == "1 · Scenario Lab":
 
     with tab_1:
 
-
         scenario_panel(
-
             scenario_1,
-
             "Scenario 1 · Current Run Rate",
-
             100,
-
             months,
-
             0,
-
             market,
-
         )
 
 
@@ -5421,21 +6097,13 @@ if page == "1 · Scenario Lab":
 
     with tab_2:
 
-
         scenario_panel(
-
             scenario_2,
-
             "Scenario 2 · Increased Run Rate",
-
             threshold,
-
             months,
-
             uplift,
-
             market,
-
         )
 
 
@@ -5445,21 +6113,19 @@ if page == "1 · Scenario Lab":
 
     with tab_3:
 
-
         section(
 
             "Scenario Comparison",
 
             (
-                f"Current RR vs "
-                f"{uplift:.1f}% uplift."
+                f"Current monthly run rate vs "
+                f"{uplift:.1f}% higher run rate."
             ),
 
         )
 
 
         comparison = pd.DataFrame(
-
             {
 
                 "Metric": [
@@ -5490,13 +6156,10 @@ if page == "1 · Scenario Lab":
                     100,
 
                     scenario_1.loc[
-
                         scenario_1[
                             "Crosses Threshold"
                         ],
-
                         "Projected Final NS",
-
                     ].sum(),
 
                     scenario_1[
@@ -5523,13 +6186,10 @@ if page == "1 · Scenario Lab":
                     100,
 
                     scenario_2.loc[
-
                         scenario_2[
                             "Crosses Threshold"
                         ],
-
                         "Projected Final NS",
-
                     ].sum(),
 
                     scenario_2[
@@ -5543,7 +6203,6 @@ if page == "1 · Scenario Lab":
                 ],
 
             }
-
         )
 
 
@@ -5553,26 +6212,379 @@ if page == "1 · Scenario Lab":
 
 
     # ========================================================
-    # IMPORTANT
+    # BELL CURVE SHIFT
     #
-    # THIS SECTION IS OUTSIDE THE TABS.
-    #
-    # THEREFORE IT RENDERS EXACTLY ONCE.
+    # OUTSIDE TABS - APPEARS ONLY ONCE
+    # ========================================================
+
+    st.divider()
+
+
+    section(
+
+        "Bell Curve Shift · Before vs Now",
+
+        (
+            "Before represents the current-run-rate projection. "
+            f"Now represents the {uplift:.1f}% increased-run-rate "
+            "scenario. A rightward movement means the RM population "
+            "is moving towards higher achievement."
+        ),
+
+    )
+
+
+    before_values = (
+
+        scenario_1[
+            "Projected Achievement %"
+        ]
+
+        .replace(
+            [
+                np.inf,
+                -np.inf
+            ],
+            np.nan
+        )
+
+        .dropna()
+
+    )
+
+
+    after_values = (
+
+        scenario_2[
+            "Projected Achievement %"
+        ]
+
+        .replace(
+            [
+                np.inf,
+                -np.inf
+            ],
+            np.nan
+        )
+
+        .dropna()
+
+    )
+
+
+    before_mean = (
+        before_values.mean()
+    )
+
+
+    after_mean = (
+        after_values.mean()
+    )
+
+
+    before_std = (
+        before_values.std()
+    )
+
+
+    after_std = (
+        after_values.std()
+    )
+
+
+    before_qualifying = int(
+        (
+            before_values
+            >=
+            100
+        )
+        .sum()
+    )
+
+
+    after_qualifying = int(
+        (
+            after_values
+            >=
+            100
+        )
+        .sum()
+    )
+
+
+    curve_kpis = st.columns(
+        4
+    )
+
+
+    with curve_kpis[0]:
+
+        kpi(
+            "Before Mean",
+            pct(
+                before_mean
+            ),
+            "Current run-rate distribution",
+            False,
+        )
+
+
+    with curve_kpis[1]:
+
+        kpi(
+
+            "Now Mean",
+
+            pct(
+                after_mean
+            ),
+
+            (
+                f"{after_mean - before_mean:+.1f} "
+                "percentage-point movement"
+            ),
+
+            True,
+
+        )
+
+
+    with curve_kpis[2]:
+
+        spread_change = (
+            after_std
+            -
+            before_std
+        )
+
+
+        if spread_change > 0:
+
+            spread_text = (
+                "Wider spread"
+            )
+
+        elif spread_change < 0:
+
+            spread_text = (
+                "Narrower spread"
+            )
+
+        else:
+
+            spread_text = (
+                "No spread change"
+            )
+
+
+        kpi(
+
+            "Spread Change",
+
+            f"{spread_change:+.1f} pp",
+
+            (
+                f"{spread_text} · "
+                f"{before_std:.1f} → {after_std:.1f}"
+            ),
+
+            False,
+
+        )
+
+
+    with curve_kpis[3]:
+
+        kpi(
+
+            "Additional RMs ≥100%",
+
+            f"{after_qualifying - before_qualifying:+,}",
+
+            (
+                f"{before_qualifying:,} → "
+                f"{after_qualifying:,} RMs"
+            ),
+
+            True,
+
+        )
+
+
+    # ========================================================
+    # GRAPH
+    # ========================================================
+
+    st.plotly_chart(
+
+        before_after_bell_curve(
+            scenario_1,
+            scenario_2,
+        ),
+
+        config={
+            "displayModeBar": False
+        },
+
+    )
+
+
+    st.caption(
+        "The smooth curves are fitted normal curves using the actual "
+        "mean and standard deviation of each scenario. The Bell Curve "
+        "tables inside Scenario 1 and Scenario 2 show the actual RM "
+        "population counts in each μ/σ band."
+    )
+
+
+    # ========================================================
+    # DISTRIBUTION SUMMARY
+    # ========================================================
+
+    distribution_summary = (
+        before_after_distribution_summary(
+            scenario_1,
+            scenario_2,
+        )
+    )
+
+
+    showdf(
+        distribution_summary
+    )
+
+
+    # ========================================================
+    # INTERPRETATION
+    # ========================================================
+
+    mean_shift = (
+        after_mean
+        -
+        before_mean
+    )
+
+
+    std_shift = (
+        after_std
+        -
+        before_std
+    )
+
+
+    if mean_shift > 0:
+
+        direction_text = (
+
+            "The overall RM distribution shifts to the right. "
+            "This means average projected target achievement "
+            "improves under the selected uplift scenario."
+
+        )
+
+    elif mean_shift < 0:
+
+        direction_text = (
+
+            "The overall RM distribution shifts to the left. "
+            "Average projected achievement is lower."
+
+        )
+
+    else:
+
+        direction_text = (
+
+            "There is no meaningful change in the centre "
+            "of the distribution."
+
+        )
+
+
+    if std_shift < 0:
+
+        spread_interpretation = (
+
+            "The curve also becomes narrower, indicating that "
+            "performance is becoming more consistent across RMs."
+
+        )
+
+    elif std_shift > 0:
+
+        spread_interpretation = (
+
+            "The curve becomes wider. The average improves, but "
+            "the difference between stronger and weaker RMs also increases."
+
+        )
+
+    else:
+
+        spread_interpretation = (
+
+            "The overall spread of RM performance remains unchanged."
+
+        )
+
+
+    st.html(
+        f"""
+<div class="callout">
+
+<b style="color:#D4AF37">
+What changed?
+</b>
+
+<br><br>
+
+{direction_text}
+
+<br><br>
+
+{spread_interpretation}
+
+<br><br>
+
+Mean Achievement:
+
+<b style="color:#F3F0E7">
+{before_mean:.1f}% → {after_mean:.1f}%
+</b>
+
+<br>
+
+Standard Deviation:
+
+<b style="color:#F3F0E7">
+{before_std:.1f} → {after_std:.1f}
+</b>
+
+<br>
+
+RMs ≥100%:
+
+<b style="color:#F3F0E7">
+{before_qualifying:,} → {after_qualifying:,}
+</b>
+
+</div>
+"""
+    )
+
+
+    # ========================================================
+    # TRAVEL BUDGET SECTION
     # ========================================================
 
     st.divider()
 
 
     qualification_budget_section(
-
         data,
-
         scenario_1,
-
         scenario_2,
-
         months,
-
     )
 
 
@@ -5582,15 +6594,10 @@ if page == "1 · Scenario Lab":
 
 elif page == "2 · New Insights":
 
-
     new_insights(
-
         data,
-
         months,
-
         market,
-
     )
 
 
@@ -5600,23 +6607,13 @@ elif page == "2 · New Insights":
 
 else:
 
-
     bonvoyage_page(
-
         data,
-
         months,
-
         market,
-
         minimum_uplift,
-
         maximum_uplift,
-
         allocation,
-
         trip_lakh,
-
         maximum_feasible,
-
     )
