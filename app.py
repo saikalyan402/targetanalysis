@@ -1366,7 +1366,6 @@ def final_sheet_page():
         "qualification is counted using the "
         "market-specific achievement gate.",
     )
-
     show_table(model["contest"])
         section(
         "12. Target Bucketing Options",
