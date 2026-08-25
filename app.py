@@ -1367,7 +1367,7 @@ def final_sheet_page():
         "market-specific achievement gate.",
     )
     show_table(model["contest"])
-        section(
+    section(
         "12. Target Bucketing Options",
         "Option 1 uses ₹5 Cr target caps; "
         "Option 2 divides RMs below and above ₹6.5 Cr.",
